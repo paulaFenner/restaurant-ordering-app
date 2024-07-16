@@ -1,0 +1,22 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --black: #3c3c3c;
+  --white: #ffffff;
+  --accent: #16db99;
+  --accent-light: #ecfdf5;
+  --accent-dark: #065f46;
+  --grey-dark: #757575;
+  --grey-light: #dedede;
+}
+
+html,
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
