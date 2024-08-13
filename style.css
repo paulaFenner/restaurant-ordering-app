@@ -17,6 +17,69 @@
 html,
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  text-align: center;
+  font-family: 'Smythe', system-ui;
+  background: var(--grey-light);
 }
+
+/* TYPOGRAPHY */
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+/* BUTTONS */
+.item-add-btn {
+  font-family: 'Inter', sans-serif;
+  width: 50px;
+  height: 50px;
+  font-size: 2rem;
+  margin-left: auto; /* Pushes the button to the right */
+  color: var(--grey-dark);
+  background: var(--white);
+  border-radius: 50%;
+  border: 2px solid var(--grey-light);
+  cursor: pointer;
+}
+
+/* LAYOUT */
+.page-wrapper {
+  max-width: 600px;
+  height: 1000px;
+  margin: 2em auto;
+  background: var(--white);
+}
+
+header {
+  padding: 3em;
+  background-image: url('assets/american-hamburger.jpg');
+  background-size: cover;
+  background-position: right 0 top 210px;
+  color: var(--white);
+  /* opacity: 0.8; Adjust opacity level */
+}
+
+/* MENU LAYOUT */
+.menu-container {
+  padding: 2em;
+}
+
+.menu-item {
+  padding: 1.5em 0;
+  display: flex;
+  gap: 1em;
+  border-bottom: 2px solid var(--grey-light);
+  align-items: center; /* Vertically centers the content */
+}
+
+.item-image {
+  font-size: 60px;
+  margin: 0;
+}
+
+.item-description {
+  text-align: left;
+}
+
+/* ORDER LAYOUT */
