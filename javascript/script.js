@@ -1,4 +1,4 @@
-import { menuArray } from './data.js';
+import { menuArray } from './javascript/data.js';
 
 const menuContainerEl = document.querySelector('.menu-container');
 
