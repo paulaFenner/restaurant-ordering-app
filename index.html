@@ -52,7 +52,22 @@
           <button>Complete order</button>
         </section>
       </main>
-    </div>
+
+      <!-- MODAL -->
+      <dialog class="modal" id="modal">
+        <h2 class="modal-title">Payment details  💳</h2>
+
+          <form class="modal-inner" id="modal-inner">
+            <input type="text" name="cardholder-name" placeholder="Cardholder name" aria-label="cardholder-name" required />
+            <input type="tel" name="card-number" placeholder="Card number" aria-label="card-number" inputmode="numeric" pattern="[0-9\s]{13,19}" maxlength="16" required />
+            <div class="flex-row">
+                <input type="month"  name="expiration-date" placeholder="Expiration date" aria-label="expiration-date" value="2024-09" required />
+                <input type="tel"  name="cvv-cvc" placeholder="CVV/CVC" aria-label="cvv-cvc" inputmode="numeric" pattern="[0-9\s]{3}" maxlength="3" required />
+            </div>
+          </form>
+          <button class="modal-btn" type="submit">Pay</button>
+      </dialog>
+
     <script type="module" src="./javascript/script.js"></script>
   </body>
 </html>

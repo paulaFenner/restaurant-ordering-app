@@ -169,3 +169,48 @@ ul {
   margin: 0.5em auto 2em auto;
   justify-content: space-between;
 }
+
+/* MODAL */
+.modal {
+  /* display: none; */
+  font-family: 'Inter', sans-serif;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 1.2em;
+  max-width: 520px;
+  max-height: 420px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 70px 30px var(--grey-dark);
+  background: var(--white);
+  color: var(--grey-dark);
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  padding: 1.5em;
+  color: var(--black);
+}
+
+.modal-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.flex-row {
+  display: flex;
+  gap: 2em;
+}
+
+input {
+  width: 100%;
+  padding: 1em;
+}
+
+.modal-btn {
+  margin: 2.5em 0;
+}
