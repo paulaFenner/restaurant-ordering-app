@@ -17,7 +17,7 @@
 html,
 body {
   margin: 0;
-  font-family: 'Smythe', system-ui;
+  font-family: 'Inter', sans-serif;
   background: var(--grey-light);
 }
 
@@ -31,12 +31,14 @@ p {
 }
 
 h1 {
+  font-family: 'Exo', sans-serif;
   font-size: 2.5rem;
 }
 
 h2,
 h3,
 h4 {
+  font-family: 'Exo', sans-serif;
   font-size: 1.75rem;
 }
 
@@ -44,9 +46,10 @@ p {
   font-size: 1rem;
 }
 
-header p {
+/* header p {
   font-size: 1.4rem;
-}
+  box-shadow: 2px 2px 2px 6px var(--grey-dark);
+} */
 
 /* BUTTONS */
 button {
@@ -61,7 +64,6 @@ button {
 }
 
 .item-add-btn {
-  font-family: 'Inter', sans-serif;
   width: 50px;
   height: 50px;
   font-size: 2rem;
@@ -87,6 +89,7 @@ button {
 /* LAYOUT */
 .page-wrapper {
   max-width: 600px;
+  min-height: 1200px;
   margin: 2em auto;
   background: var(--white);
 }
@@ -140,6 +143,7 @@ ul {
 
 /* ORDER LAYOUT */
 .order-container {
+  display: none;
   padding-top: 0;
   text-align: center;
 }
@@ -156,7 +160,6 @@ ul {
 }
 
 .order-item {
-  border-bottom: 2px solid var(--grey-dark);
   align-items: center;
   gap: 1em;
 }
@@ -166,13 +169,24 @@ ul {
 }
 
 .order-total {
-  margin: 0.5em auto 2em auto;
+  margin: 2em auto;
+  border-top: 2px solid var(--grey-dark);
   justify-content: space-between;
+}
+
+.order h4,
+.price {
+  margin: 0.5em 0;
+}
+
+.dispatched-message {
+  color: var(--accent-dark);
+  background: var(--accent-light);
+  padding: 1.8em;
 }
 
 /* MODAL */
 .modal {
-  /* display: none; */
   font-family: 'Inter', sans-serif;
   position: fixed;
   right: 0;
@@ -211,6 +225,6 @@ input {
   padding: 1em;
 }
 
-.modal-btn {
-  margin: 2.5em 0;
+.modal-pay-btn {
+  margin: 2em 0;
 }

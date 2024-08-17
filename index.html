@@ -1,73 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jimmy's Diner</title>
-    <link rel="stylesheet" href="style.css" />
 
-    <!-- FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Smythe&display=swap" rel="stylesheet" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jimmy's Diner</title>
+  <link rel="stylesheet" href="style.css" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="page-wrapper">
-      <header>
-        <h1>Jimmy's Diner</h1>
-        <p>The best burgers and pizzas in town.</p>
-      </header>
-      <main>
-        <section class="menu-container">
-          <!-- ITEMS WILL RENDER HERE -->
-        </section>
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
 
-        <section class="order-container">
-          <h3>Your Order</h3>
+</head>
 
-          <ul class="order">
-            <!-- YOUR ORDER WILL RENDER HERE -->
-            <li class="order-item">
-              <h4>Pizza</h4>
-              <button class="remove-btn" id="remove-btn">remove</button>
-              <p class="price"><span>€</span> 14</p>
-            </li>
-            <!-- YOUR ORDER WILL RENDER HERE -->
-          </ul>
+<body>
+  <div class="page-wrapper">
+    <header>
+      <h1>Jimmy's Diner</h1>
+      <p>The best burgers and pizzas in town.</p>
+    </header>
+    <main>
+      <section class="menu-container">
+        <!-- ITEMS WILL RENDER HERE -->
+      </section>
 
-          <div class="order order-total">
-            <!-- YOUR TOTAL WILL RENDER HERE -->
-            <h4>Total price:</h4>
-            <p class="price">€xx</p>
-            <!-- YOUR TOTAL WILL RENDER HERE -->
-          </div>
+      <section class="order-container">
+        <h3>Your Order</h3>
+        <ul class="order-selection">
+          <!-- YOUR ORDER WILL RENDER HERE -->
+        </ul>
 
-          <button>Complete order</button>
-        </section>
-      </main>
+        <div class="order order-total">
+          <!-- YOUR TOTAL WILL RENDER HERE -->
+          <!-- <h4>Total price:</h4>
+          <p class="price">€</p> -->
+          <!-- YOUR TOTAL WILL RENDER HERE -->
+        </div>
 
-      <!-- MODAL -->
-      <dialog class="modal" id="modal">
-        <h2 class="modal-title">Payment details  💳</h2>
+        <button id="complete-order-btn">Complete order</button>
+      </section>
 
-          <form class="modal-inner" id="modal-inner">
-            <input type="text" name="cardholder-name" placeholder="Cardholder name" aria-label="cardholder-name" required />
-            <input type="tel" name="card-number" placeholder="Card number" aria-label="card-number" inputmode="numeric" pattern="[0-9\s]{13,19}" maxlength="16" required />
-            <div class="flex-row">
-                <input type="month"  name="expiration-date" placeholder="Expiration date" aria-label="expiration-date" value="2024-09" required />
-                <input type="tel"  name="cvv-cvc" placeholder="CVV/CVC" aria-label="cvv-cvc" inputmode="numeric" pattern="[0-9\s]{3}" maxlength="3" required />
-            </div>
-          </form>
-          <button class="modal-btn" type="submit">Pay</button>
-      </dialog>
+    </main>
+
+    <!-- MODAL -->
+    <dialog class="modal" id="modal">
+      <h2 class="modal-title">Payment details 💳</h2>
+
+      <form class="modal-inner" id="modal-inner">
+        <input type="text" name="cardholder-name" placeholder="Cardholder name" aria-label="cardholder-name" required />
+        <input type="tel" name="card-number" placeholder="Card number" aria-label="card-number" inputmode="numeric"
+          pattern="[0-9\s]{13,19}" maxlength="16" required />
+        <div class="flex-row">
+          <input type="month" name="expiration-date" placeholder="Expiration date" aria-label="expiration-date"
+            value="2024-09" required />
+          <input type="tel" name="cvv-cvc" placeholder="CVV/CVC" aria-label="cvv-cvc" inputmode="numeric"
+            pattern="[0-9\s]{3}" maxlength="3" required />
+        </div>
+      </form>
+      <button class="modal-pay-btn" type="submit">Pay</button>
+    </dialog>
 
     <script type="module" src="./javascript/script.js"></script>
-  </body>
+</body>
+
 </html>
