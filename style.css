@@ -37,16 +37,21 @@ p {
   margin: 0;
 }
 
-h1 {
+h1,
+h2,
+h3,
+h4 {
   font-family: 'SamuraiWarrior', sans-serif;
+}
+
+h1 {
   font-size: 2.5rem;
 }
 
 h2,
 h3,
 h4 {
-  font-family: 'SamuraiWarrior', sans-serif;
-  font-size: 1.75rem;
+  font-size: 2rem;
 }
 
 p {
@@ -67,10 +72,14 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  background-color: var(--accent-medium);
+}
+
 .item-add-btn {
   width: 50px;
   height: 50px;
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-left: auto; /* Pushes the button to the right */
   color: var(--grey-dark);
   background: var(--white);
@@ -78,9 +87,18 @@ button {
   border: 2px solid var(--grey-light);
 }
 
+.item-add-btn:hover {
+  background: var(--accent-light);
+}
+
 .remove-btn {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--grey-light);
+  background: var(--white);
+}
+
+.remove-btn:hover {
+  color: var(--grey-dark);
   background: var(--white);
 }
 
@@ -90,9 +108,12 @@ button {
   cursor: pointer;
 }
 
-.modal-pay-btn,
+.modal-pay-btn {
+  margin: 1.5em 0 0 0;
+}
+
 .new-order-btn {
-  margin: 2em 0;
+  margin-bottom: auto; /* Pushes the button to the right */
 }
 
 /* LAYOUT */
@@ -125,13 +146,13 @@ ul {
 .menu-item {
   padding: 1.5em 0;
   display: flex;
-  gap: 1em;
+  gap: 1.5em;
   border-bottom: 2px solid var(--grey-light);
   align-items: center; /* Vertically centers the content */
 }
 
 .item-image {
-  font-size: 60px;
+  font-size: 3.5rem;
   margin: 0;
 }
 
@@ -162,11 +183,6 @@ ul {
   display: flex;
 }
 
-.order {
-  margin: 2.3em auto 0 auto;
-  text-align: center;
-}
-
 .order-item {
   align-items: center;
   gap: 1em;
@@ -187,10 +203,20 @@ ul {
   margin: 0.5em 0;
 }
 
-.dispatched-message {
+.order-item h4 {
+  white-space: nowrap; /* Prevents text from wrapping */
+  flex-grow: 1; /* Allows the h4 to take available space */
+}
+
+.cart-closed {
   color: var(--accent-dark);
   background: var(--accent-light);
-  padding: 1em;
+  padding: 2em;
+}
+
+.dispatched-message {
+  font-size: 1.5rem;
+  padding: 2em;
 }
 
 /* MODAL */
@@ -200,11 +226,9 @@ ul {
   left: 0;
   top: 0;
   bottom: 0;
-  /* font-family: 'Inter', sans-serif; */
   margin: auto;
   padding: 1.2em;
   max-width: 520px;
-  max-height: 420px;
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0px 70px 30px var(--grey-dark);
@@ -213,14 +237,14 @@ ul {
 }
 
 .modal-title {
-  font-size: 1.5rem;
-  padding: 1.5em;
+  margin: 0.5em;
   color: var(--black);
 }
 
 .modal-inner {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 1em;
 }
 

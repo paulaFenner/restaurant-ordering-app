@@ -3,12 +3,11 @@
 1. set up the header
 
 - [x] finding the image
-
 - [x] importing the font
 - [x] create the content
 - [x] style with css
 
-1. start by setting up one menu item
+2. start by setting up one menu item
 
 - [x] icon to the left
 - [x] text
@@ -48,4 +47,4 @@
 10. added a new order button
 
 - [x] below the notification
-- [ ] button refreshed the page
+- [x] button refreshed the page
