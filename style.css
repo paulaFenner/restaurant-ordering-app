@@ -25,6 +25,7 @@ html,
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
+  font-size: 16px;
   background: var(--grey-light);
 }
 
@@ -120,7 +121,7 @@ button:hover {
 .page-wrapper {
   max-width: 600px;
   min-height: 1200px;
-  margin: 2em auto;
+  margin: 0 auto;
   background: var(--white);
 }
 
@@ -256,4 +257,13 @@ ul {
 input {
   width: 100%;
   padding: 1em;
+}
+
+/* BREAKPOINTS */
+
+@media (max-width: 320px) {
+  html,
+  body {
+    font-size: 12px;
+  }
 }
