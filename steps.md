@@ -42,10 +42,10 @@
 
 9. when pay button is clicked
 
-- change checkout box for notification
-  - close modal
+- [x] change checkout box for notification
+  - [x] close modal
 
-1.  added a new order button
+10. added a new order button
 
-- below the notification
-- button refreshed the page
+- [x] below the notification
+- [ ] button refreshed the page

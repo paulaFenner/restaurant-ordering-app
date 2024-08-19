@@ -6,12 +6,14 @@ let orderSum = 0;
 const menuContainerEl = document.querySelector('.menu-container');
 const orderContainerEl = document.querySelector('.order-container');
 const completeOrderBtn = document.getElementById('complete-order-btn');
+const modalInner = document.getElementById('modal-inner'); // Ensure this form element is selected
 const modalPaymentEl = document.getElementById('modal');
 const modalPayBtn = document.querySelector('.modal-pay-btn');
 
 menuContainerEl.addEventListener('click', handleItemSelected);
 completeOrderBtn.addEventListener('click', handleCheckout);
-modalPayBtn.addEventListener('click', orderCompleted);
+modalPayBtn.addEventListener('click', handleFormSubmission);
+orderContainerEl.addEventListener('click', removeItemFromOrder);
 
 function populateMenuContainer() {
   for (let menuItem of menuArray) {
@@ -28,7 +30,7 @@ function generateMenuList(menuItem) {
             <p class="item-ingredients">${menuItem.ingredients}</p>
             <p class="price">€ ${menuItem.price}</p>
         </div>
-        <button class="item-add-btn" data-id="${menuItem.id}">+</button>
+        <button class="item-add-btn" data-id="${menuItem.id}" aria-label="add item">+</button>
     </section>
       `;
 }
@@ -53,7 +55,7 @@ function generateOrderList(product) {
   document.querySelector('.order-selection').innerHTML += `
     <li class="order-item">
         <h4>${product.name}</h4>
-        <button class="remove-btn" id="remove-btn">remove</button>
+        <button class="remove-btn" data-id="${product.id}"  id="remove-btn" aria-label="remove item">remove</button>
         <p class="price"><span>€</span>${product.price}</p>
     </li>
      `;
@@ -69,12 +71,45 @@ function generateTotalPrice(product) {
      `;
 }
 
-// function removeItemFromOrder() {
-//   document.getElementById('remove-btn').addEventListener('click', function () {});
-// }
+function removeItemFromOrder(e) {
+  if (e.target.classList.contains('remove-btn')) {
+    const productId = parseInt(e.target.dataset.id);
+    const productIndex = order.findIndex((item) => item.id === productId);
+
+    if (productIndex !== -1) {
+      // Update the total price
+      orderSum -= order[productIndex].price;
+      document.querySelector('.order-total .price').textContent = `€${orderSum}`;
+
+      // Remove the item from the order array
+      order.splice(productIndex, 1);
+
+      // Remove the item from the DOM
+      e.target.closest('.order-item').remove();
+
+      // Hide the order container if no items are left
+      if (order.length === 0) {
+        orderContainerEl.style.display = 'none';
+      }
+    }
+  }
+}
 
 function handleCheckout() {
-  modalPaymentEl.style.display = 'block';
+  modalPaymentEl.showModal();
+}
+
+function handleFormSubmission(event) {
+  event.preventDefault(); // Prevent default form submission behavior
+  if (modalInner.checkValidity()) {
+    orderCompleted(); // Only call if the form is valid
+  }
+}
+
+function orderCompleted() {
+  modalPaymentEl.close();
+  generateCompletionMessage();
+  clearPaymentInput();
 }
 
 function getFirstNameCardholder() {
@@ -83,26 +118,30 @@ function getFirstNameCardholder() {
 }
 
 function generateCompletionMessage() {
+  orderContainerEl.style.display = 'block';
   orderContainerEl.innerHTML = `
   <h3 class="dispatched-message">Thanks, ${getFirstNameCardholder()}!
   <br> Your order is on its way!</h3>
   <button class="new-order-btn" id="new-order-btn">New Order</button>
   `;
+  appendEventToNewOrderBtn();
+}
+
+function appendEventToNewOrderBtn() {
+  const newOrderBtn = document.getElementById('new-order-btn');
+  if (newOrderBtn) {
+    newOrderBtn.addEventListener('click', newOrder);
+  }
 }
 
 function clearPaymentInput() {
-  document.querySelector('[name="cardholder-name"]').value = '';
-  document.querySelector('[name="card-number"]').value = '';
-  document.querySelector('[name="expiration-date"]').value = '';
-  document.querySelector('[name="cvv-cvc"]').value = '';
+  modalInner.reset(); // This resets the entire form
 }
 
-function orderCompleted() {
+function newOrder() {
   order = [];
   orderSum = 0;
-  modalPaymentEl.style.display = 'none';
-  generateCompletionMessage();
-  clearPaymentInput();
+  orderContainerEl.style.display = 'none';
 }
 
 populateMenuContainer();

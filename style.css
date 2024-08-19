@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'SamuraiWarrior';
+  src: url('/assets/fonts/SamuraiWarrior-mL27a.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 *,
 *::before,
 *::after {
@@ -7,9 +14,9 @@
 :root {
   --black: #3c3c3c;
   --white: #ffffff;
-  --accent: #16db99;
-  --accent-light: #ecfdf5;
-  --accent-dark: #065f46;
+  --accent: #af243d;
+  --accent-light: #f3ece7;
+  --accent-medium: #c5435a;
   --grey-dark: #757575;
   --grey-light: #dedede;
 }
@@ -31,14 +38,14 @@ p {
 }
 
 h1 {
-  font-family: 'Exo', sans-serif;
+  font-family: 'SamuraiWarrior', sans-serif;
   font-size: 2.5rem;
 }
 
 h2,
 h3,
 h4 {
-  font-family: 'Exo', sans-serif;
+  font-family: 'SamuraiWarrior', sans-serif;
   font-size: 1.75rem;
 }
 
@@ -46,21 +53,18 @@ p {
   font-size: 1rem;
 }
 
-/* header p {
-  font-size: 1.4rem;
-  box-shadow: 2px 2px 2px 6px var(--grey-dark);
-} */
-
 /* BUTTONS */
 button {
   width: 100%;
   font-family: 'Inter', sans-serif;
+  font-weight: 700;
   font-size: 1rem;
   padding: 1.2em;
   color: var(--white);
   background: var(--accent);
   border: none;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .item-add-btn {
@@ -72,7 +76,6 @@ button {
   background: var(--white);
   border-radius: 50%;
   border: 2px solid var(--grey-light);
-  cursor: pointer;
 }
 
 .remove-btn {
@@ -84,6 +87,12 @@ button {
 .item-add-btn,
 .remove-btn {
   padding: 0;
+  cursor: pointer;
+}
+
+.modal-pay-btn,
+.new-order-btn {
+  margin: 2em 0;
 }
 
 /* LAYOUT */
@@ -95,12 +104,11 @@ button {
 }
 
 header {
-  padding: 3em;
-  background-image: url('assets/american-hamburger.jpg');
+  padding: 2.5em;
+  background-image: url('assets/images/japanese.jpg');
   background-size: cover;
-  background-position: right 0 top 210px;
-  color: var(--white);
-  /* opacity: 0.8; Adjust opacity level */
+  background-position: right -40px top 230px;
+  color: var(--black);
 }
 
 ul {
@@ -182,21 +190,22 @@ ul {
 .dispatched-message {
   color: var(--accent-dark);
   background: var(--accent-light);
-  padding: 1.8em;
+  padding: 1em;
 }
 
 /* MODAL */
 .modal {
-  font-family: 'Inter', sans-serif;
   position: fixed;
   right: 0;
   left: 0;
   top: 0;
   bottom: 0;
+  /* font-family: 'Inter', sans-serif; */
   margin: auto;
   padding: 1.2em;
   max-width: 520px;
   max-height: 420px;
+  border: none;
   border-radius: 5px;
   box-shadow: 0px 0px 70px 30px var(--grey-dark);
   background: var(--white);
@@ -223,8 +232,4 @@ ul {
 input {
   width: 100%;
   padding: 1em;
-}
-
-.modal-pay-btn {
-  margin: 2em 0;
 }
