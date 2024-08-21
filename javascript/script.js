@@ -5,15 +5,14 @@ let orderSum = 0;
 
 const mainEl = document.querySelector('main');
 const orderContainerEl = document.querySelector('.order-container');
-const shoppingCartEl = document.querySelector('.shopping-cart');
-const completeOrderBtn = document.getElementById('complete-order-btn');
+let shoppingCartEl = document.querySelector('.shopping-cart');
+let completeOrderBtn = document.getElementById('complete-order-btn');
 const modalInnerEl = document.getElementById('modal-inner');
 const modalPaymentEl = document.getElementById('modal');
-const modalPayBtn = document.querySelector('.modal-pay-btn');
 
 mainEl.addEventListener('click', handleItemSelected);
 completeOrderBtn.addEventListener('click', handleCheckout);
-modalPayBtn.addEventListener('click', handleFormSubmission);
+modalInnerEl.addEventListener('submit', handleFormSubmission);
 
 function populateMenuContainer() {
   for (let menuItem of menuArray) {
@@ -49,7 +48,13 @@ function handleItemSelected(e) {
 
 function appendOrder(product) {
   if (product) {
-    order.push(product);
+    const existingProductIndex = order.findIndex((item) => item.id === product.id);
+
+    if (existingProductIndex !== -1) {
+      order[existingProductIndex].quantity = (order[existingProductIndex].quantity || 1) + 1;
+    } else {
+      order.push({ ...product, quantity: 1 });
+    }
     orderSum += product.price;
     orderContainerEl.style.display = 'block';
 
@@ -57,28 +62,59 @@ function appendOrder(product) {
   }
 }
 
+// function appendOrder(product) {
+//   if (product) {
+//     order.push(product);
+//     orderSum += product.price;
+//     orderContainerEl.style.display = 'block';
+
+//     updateShoppingCart();
+//   }
+// }
+
 function removeItemFromOrder(product) {
   const productIndex = order.findIndex((item) => item.id === product.id);
 
   if (productIndex !== -1) {
-    order.splice(productIndex, 1); // Remove the product from the order array
-
-    orderSum -= product.price; // Recalculate the total price after removing the product
+    if (order[productIndex].quantity > 1) {
+      order[productIndex].quantity -= 1;
+      orderSum -= product.price;
+    } else {
+      order.splice(productIndex, 1);
+      orderSum -= product.price;
+    }
     generateTotalPrice();
     updateShoppingCart();
 
-    // Hide the order section if the order is empty
     if (order.length === 0) {
       orderContainerEl.style.display = 'none';
     }
   }
 }
 
+// function removeItemFromOrder(product) {
+//   const productIndex = order.findIndex((item) => item.id === product.id);
+
+//   if (productIndex !== -1) {
+//     order.splice(productIndex, 1); // Remove the product from the order array
+
+//     orderSum -= product.price; // Recalculate the total price after removing the product
+//     generateTotalPrice();
+//     updateShoppingCart();
+
+//     // Hide the order section if the order is empty
+//     if (order.length === 0) {
+//       orderContainerEl.style.display = 'none';
+//     }
+//   }
+// }
+
 function generateOrderList(product) {
   shoppingCartEl.innerHTML += `
       <li class="order-item">
           <h4>${product.name}</h4>
           <button class="remove-btn" data-remove="${product.id}"  id="remove-btn" aria-label="remove item">remove</button>
+          <p class="item-quantity">${product.quantity} x</p>
           <p class="price"><span>€</span>${product.price}</p>
       </li>
        `;
@@ -136,10 +172,25 @@ function clearPaymentInput() {
   modalInnerEl.reset(); // This resets the entire form
 }
 
+function reset() {
+  orderContainerEl.style.display = 'none';
+
+  orderContainerEl.innerHTML = `
+    <h3>Your Order</h3>
+    <ul class="shopping-cart"></ul>
+    <div class="order order-total"></div>
+    <button id="complete-order-btn" aria-label="send order">Complete order</button>
+  `;
+
+  shoppingCartEl = document.querySelector('.shopping-cart');
+  completeOrderBtn = document.getElementById('complete-order-btn');
+  completeOrderBtn.addEventListener('click', handleCheckout);
+}
+
 function newOrder() {
+  reset(); // This refresh page to start a new order
   order = [];
   orderSum = 0;
-  window.location.reload(); // This refresh page to start a new order
 }
 
 populateMenuContainer();
